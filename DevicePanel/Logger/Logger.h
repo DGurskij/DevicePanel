@@ -1,0 +1,28 @@
+#pragma once
+#include <ctime>
+#include <fstream>
+
+#define EVENT_ID_LENGTH 20
+
+typedef struct StructEvent
+{
+	time_t timestamp;
+	char event_id[EVENT_ID_LENGTH];
+
+	int p1;
+	int p2;
+	int p3;
+} Event;
+
+class Logger
+{
+protected:
+	Logger(char* file_path);
+
+	char* file_path;
+	std::ofstream log_stream;
+
+public:
+	virtual void write(Event event) = 0;
+	~Logger();
+};
