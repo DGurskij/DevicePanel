@@ -1,12 +1,17 @@
 #pragma once
 #include <ctime>
 #include <fstream>
+#include <chrono>
 
 #define EVENT_ID_LENGTH 20
 
+typedef std::chrono::system_clock CLOCK;
+typedef std::chrono::milliseconds ms;
+typedef std::chrono::seconds sec;
+
 typedef struct StructEvent
 {
-	time_t timestamp;
+	ms timestamp;
 	char event_id[EVENT_ID_LENGTH];
 
 	int p1;

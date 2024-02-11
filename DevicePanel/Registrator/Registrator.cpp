@@ -18,7 +18,7 @@ void registratorWorker(Panel* panel)
 
 		do
 		{
-			Sleep(random(10, 100)); // emulate high load
+			Sleep(random(1, 20)); // emulate high load
 			if (!ReadFile(pipe_read, &event, sizeof(Event), &bytes_read, NULL))
 			{
 				DWORD error_code = GetLastError();

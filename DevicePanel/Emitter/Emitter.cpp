@@ -33,9 +33,9 @@ void emitterWorker(Panel* panel)
 		}
 		else
 		{
-			std::this_thread::sleep_for(ms(panel->event_spawn_time + random(0, 10)));
+			std::this_thread::sleep_for(ms(panel->event_spawn_time + random(0, 1)));
 
-			event.timestamp = std::time(NULL);
+			event.timestamp = std::chrono::duration_cast<ms>(CLOCK::now().time_since_epoch());
 			strcpy_s(event.event_id, EVENT_ID_LENGTH, events[random(0, 4)]);
 
 			event.p1 = random(-1000, 1000);

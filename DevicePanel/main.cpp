@@ -35,7 +35,7 @@ int main()
 
 	SECURITY_ATTRIBUTES sa = { sizeof(SECURITY_ATTRIBUTES), NULL, TRUE };
 
-	if (!CreatePipe(&panel->channel.pipe_read, &panel->channel.pipe_wirte, &sa, 0))
+	if (!CreatePipe(&panel->channel.pipe_read, &panel->channel.pipe_wirte, &sa, sizeof(Event) * 100000))
 	{
 		DWORD error_code = GetLastError();
 		std::cerr << "Pipe create error[" << error_code << "]: " << std::system_category().message(error_code) << "\n";
